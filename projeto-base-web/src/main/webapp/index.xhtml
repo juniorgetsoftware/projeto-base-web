@@ -10,107 +10,23 @@
 
 <h:body>
 	<h:form>
-		<h:outputLabel value="#{contaBean.mensagem}" />
 
-		<br />
+		<h:outputLabel value="Título: " />
+		<h:inputText id="titulo" value="#{contaBean.conta.titulo}" />
 
-		<h:outputLabel value="Nome: " />
-		<h:inputText value="" />
-		<br />
+		<h:outputLabel value="Valor: " />
+		<h:inputText id="valor" value="#{contaBean.conta.valor}" />
 
-		<h:outputLabel value="E-mail: " />
-		<h:inputText value="" />
-		<br />
-
-		<h:outputLabel value="Senha: " />
-		<h:inputSecret value="" />
-		<br />
-
-		<h:outputLabel value="Descrição: " />
-		<h:inputTextarea value="" />
-
-		<br />
-
-		<h:commandButton value="Submeter formulário" />
-
-		<br />
-
-		<h:commandLink value="Ir para google" />
-
-		<br />
-
-		<h:outputLabel value="Exibindo imagem: " />
-
-		<br />
-
-		<h:graphicImage width="100"
-			url="https://pbs.twimg.com/profile_images/1352023473/jsf-logo-no-text_400x400.png" />
+		<h:commandButton action="#{contaBean.adicionar()}" value="Cadastrar" />
 
 
-		<br />
 
-		<h:outputLabel value="Filme: " />
-		<h:selectOneMenu>
-			<f:selectItem itemLabel="Homem formiga" itemValue="1" />
-			<f:selectItem itemLabel="Pantera negra" itemValue="2" />
-			<f:selectItem itemLabel="Homem de ferro" itemValue="3" />
-			<f:selectItem itemLabel="Vingadores" itemValue="4" />
-			<f:selectItem itemLabel="Capitã marvel" itemValue="5" />
-		</h:selectOneMenu>
-
-		<br />
-
-		<h:outputLabel value="Jogos: " />
-		<h:selectManyCheckbox value="FIFA">
-			<f:selectItem itemLabel="Call of Dutty" itemValue="1" />
-			<f:selectItem itemLabel="PES" itemValue="2" />
-			<f:selectItem itemLabel="God of War" itemValue="3" />
-			<f:selectItem itemLabel="GTA" itemValue="4" />
-			<f:selectItem itemLabel="MAFIA" itemValue="5" />
-		</h:selectManyCheckbox>
-
-		<br />
-
-		<h:outputLabel value="Deseja receber notificações?" />
-		<h:selectBooleanCheckbox />
-
-		<br />
-		<br />
-
-		<h:outputLabel value="Lista de contas" />
-		<h:dataTable value="#{contaBean.listarContas()}" var="conta">
-			<h:column rowHeader="Título">
-				<f:facet name="header" />
-				<h:outputText value="#{conta.titulo}">
-
-				</h:outputText>
-			</h:column>
-
-			<h:column rowHeader="Valor">
-				<f:facet name="header" />
-				<h:outputText value="#{conta.valor}">
-					<f:convertNumber type="currency" />
-				</h:outputText>
-			</h:column>
-
-			<h:column rowHeader="Data vencimento">
-				<f:facet name="header" />
-
-				<h:outputText value="#{conta.dataVencimento}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</h:outputText>
-			</h:column>
-
-			<h:column rowHeader="Data pagamento">
-				<f:facet name="header" />
-				<h:outputText value="#{conta.dataPagamento}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</h:outputText>
-			</h:column>
+		<h:dataTable value="#{contaBean.contas}" var="conta">
+			<h:column>
+		#{conta.titulo}
+		</h:column>
 		</h:dataTable>
-
 	</h:form>
-
 </h:body>
 
 </html>
