@@ -10,7 +10,7 @@ public class ContaDAO {
 	private static List<Conta> contasDb = new ArrayList<>();
 
 	public void adicionar(Conta conta) {
-		conta.setId(contasDb.size() + 1l);
+		conta.setId(Long.valueOf(contasDb.size()));
 		contasDb.add(conta);
 	}
 
@@ -19,7 +19,7 @@ public class ContaDAO {
 		if (indice == -1) {
 			throw new RuntimeException("Não foi possível encontrar a conta.");
 		}
-		contasDb.add(conta);
+		contasDb.set(indice, conta);
 	}
 
 	public void deletar(Conta conta) {
@@ -32,6 +32,10 @@ public class ContaDAO {
 
 	public List<Conta> listarTodos() {
 		return contasDb;
+	}
+
+	public Conta contaPorId(Long indice) {
+		return contasDb.stream().filter(c -> c.getId().equals(indice)).findFirst().orElse(null);
 	}
 
 }

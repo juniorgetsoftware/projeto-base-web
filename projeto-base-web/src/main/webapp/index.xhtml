@@ -5,13 +5,35 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
+	<h:outputStylesheet library="css" name="estilo.css" />
 	<title>Home</title>
 </h:head>
 
 <h:body>
 
-	#{categoriaController.mensagem}
- 
+
+	<header> <nav>
+
+	<div class="logo">
+		<h:link value="Contas WEB" outcome="/index"></h:link>
+	</div>
+
+	<ul class="menu">
+		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
+		<li class="menu__item"><h:link value="Nova conta"
+				outcome="/conta/cadastrar-conta" /></li>
+		<li class="menu__item"><h:link value="Listar contas"
+				outcome="/conta/listar-contas" /></li>
+	</ul>
+	</nav> </header>
+
+	<div class="conteiner">
+
+		<h1>Olá, mundo</h1>
+		<hr />
+
+	</div>
+
 </h:body>
 
 </html>

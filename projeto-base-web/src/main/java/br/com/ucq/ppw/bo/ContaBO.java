@@ -33,4 +33,8 @@ public class ContaBO {
 	public List<Conta> listarTodos() {
 		return dao.listarTodos();
 	}
+
+	public Conta contaPorId(Long indice) {
+		return dao.contaPorId(indice);
+	}
 }

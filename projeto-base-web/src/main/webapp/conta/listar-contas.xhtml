@@ -6,14 +6,98 @@
 
 <h:head>
 	<title>Listar contas</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
+
 <body>
 
-	<h:dataTable value="#{contaBean.contas}" var="conta">
-		<h:column>
-		#{conta.titulo}
-		</h:column>
-	</h:dataTable>
+<header> <nav>
 
+	<div class="logo">
+		<h:link value="Contas WEB" outcome="/index"></h:link>
+	</div>
+
+	<ul class="menu">
+		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
+		<li class="menu__item"><h:link value="Nova conta"
+				outcome="/conta/cadastrar-conta" /></li>
+		<li class="menu__item"><h:link value="Listar contas"
+				outcome="/conta/listar-contas" /></li>
+	</ul>
+	</nav> </header>
+	
+	<div class="conteiner">
+
+		<h:form prependId="false">
+
+			<h1>Listar contas</h1>
+
+			<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
+				errorClass="msg-error" fatalClass="msg-fatal" />
+				
+			<hr/>
+
+			<div class="datatable">
+				<h:dataTable id="contas" value="#{contaController.contas}"
+					var="conta">
+					<h:column headerClass="w10">
+						<f:facet name="header">
+					ID
+				</f:facet>
+				#{conta.id}
+			</h:column>
+					<h:column headerClass="w10">
+						<f:facet name="header">
+					Tipo
+				</f:facet>
+				#{conta.tipo.descricao}
+			</h:column>
+					<h:column headerClass="w40">
+						<f:facet name="header">
+					Título
+				</f:facet>
+				#{conta.titulo}
+			</h:column>
+					<h:column headerClass="w20">
+						<f:facet name="header">
+					Valor
+				</f:facet>
+						<h:outputLabel value="#{conta.valor}">
+							<f:convertNumber type="currency" />
+						</h:outputLabel>
+					</h:column>
+					<h:column headerClass="w10">
+						<f:facet name="header">
+					Data vencimento
+				</f:facet>
+						<h:outputLabel value="#{conta.dataVencimento}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputLabel>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+					Data pagamento
+				</f:facet>
+						<h:outputLabel value="#{conta.dataPagamento}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputLabel>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+					Ações
+				</f:facet>
+						<h:link outcome="/conta/cadastrar-conta">
+							<h:graphicImage library="img" name="editar.svg" width="20" />
+							<f:param name="id" value="#{conta.id}" />
+						</h:link>
+
+						<h:commandLink action="#{contaController.deletar(conta)}">
+							<h:graphicImage library="img" name="remover.svg" width="20" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</div>
+		</h:form>
+	</div>
 </body>
 </html>

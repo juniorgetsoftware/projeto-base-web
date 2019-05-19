@@ -5,53 +5,79 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Cadastrar conta</title>
+	<title>#{contaController.conta.id == null ? 'Cadastrar' : 'Atualizar'} conta</title>
 	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 <body>
 
-	<h:form prependId="false" styleClass="form">
+<header> <nav>
 
-		<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
-			errorClass="msg-error" fatalClass="msg-fatal" />
+	<div class="logo">
+		<h:link value="Contas WEB" outcome="/index"></h:link>
+	</div>
 
-		<h1>Cadastrar conta</h1>
+	<ul class="menu">
+		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
+		<li class="menu__item"><h:link value="Nova conta"
+				outcome="/conta/cadastrar-conta" /></li>
+		<li class="menu__item"><h:link value="Listar contas"
+				outcome="/conta/listar-contas" /></li>
+	</ul>
+	</nav> </header>
 
-		<h:panelGrid columns="2">
+	<div class="conteiner">
+	
+		<h:form prependId="false">
 
-			<h:outputLabel value="Título: " />
-			<h:inputText id="titulo" value="#{contaBean.conta.titulo}"
-				required="true" requiredMessage="Campo Título é obrigatório!" />
+			<h1>#{contaController.conta.id == null ? 'Cadastrar' : 'Atualizar'} conta</h1>
 
-			<h:outputLabel value="Valor: " />
-			<h:inputText id="valor" value="#{contaBean.conta.valor}"
-				required="true" requiredMessage="Campo Valor é obrigatório" />
+			<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
+				errorClass="msg-error" fatalClass="msg-fatal" />
 
-			<h:outputLabel value="Tipo: " />
-			<h:selectOneRadio id="tipo" value="#{contaBean.conta.tipo}"
-				required="true" requiredMessage="Campo Tipo é obrigatório">
-				<f:selectItems value="#{contaBean.tipos()}" var="conta"
-					itemValue="#{conta}" itemLabel="#{conta.descricao}" />
-			</h:selectOneRadio>
 
-			<h:outputLabel value="Data de vencimento: " />
-			<h:inputText id="data-vencimento"
-				value="#{contaBean.conta.dataVencimento}" required="true"
-				requiredMessage="Campo Data de vencimento é obrigatório">
-				<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
-			</h:inputText>
+			<hr/>
 
-			<h:outputLabel value="Data de pagamento: " />
-			<h:inputText id="data-pagamento"
-				value="#{contaBean.conta.dataPagamento}">
-				<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
-			</h:inputText>
+			<h:panelGrid columns="2">
 
-			<h:commandButton action="#{contaBean.adicionar()}" value="Cadastrar" />
+				<h:outputLabel value="Título: " />
+				<h:inputText id="titulo" value="#{contaController.conta.titulo}"
+					required="true" requiredMessage="Campo Título é obrigatório!" />
 
-		</h:panelGrid>
+				<h:outputLabel value="Valor: " />
+				<h:inputText id="valor" value="#{contaController.conta.valor}"
+					required="true" requiredMessage="Campo Valor é obrigatório" />
 
-	</h:form>
+				<h:outputLabel value="Tipo: " />
+				<h:selectOneRadio id="tipo" value="#{contaController.conta.tipo}"
+					required="true" requiredMessage="Campo Tipo é obrigatório">
+					<f:selectItems value="#{contaController.tipos()}" var="conta"
+						itemValue="#{conta}" itemLabel="#{conta.descricao}" />
+				</h:selectOneRadio>
+
+				<h:outputLabel value="Data de vencimento: " />
+				<h:inputText id="data-vencimento"
+					value="#{contaController.conta.dataVencimento}" required="true"
+					requiredMessage="Campo Data de vencimento é obrigatório">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+				</h:inputText>
+
+				<h:outputLabel value="Data de pagamento: " />
+				<h:inputText id="data-pagamento"
+					value="#{contaController.conta.dataPagamento}">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+				</h:inputText>
+
+				<h:commandButton action="#{contaController.adicionar()}"
+					styleClass="btn btn-salvar" value="Cadastrar"
+					rendered="#{contaController.conta.id == null}" />
+				<h:commandButton action="#{contaController.atualizar()}"
+					styleClass="btn btn-atualizar" value="Atualizar"
+					rendered="#{contaController.conta.id != null}" />
+				<h:button outcome="/conta/listar-contas" styleClass="btn btn-cancelar" value="Cancelar" />
+
+			</h:panelGrid>
+		</h:form>
+	</div>
 
 </body>
 </html>
