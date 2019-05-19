@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body {
+	padding: 0;
+	margin: 0 auto;
+	width: 50%;
+	background: #f9f9f9;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+.form {
+	background: white;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.msg-info {
+	background: #a3cae0;
+	padding: 5px;
+	list-style: none;
+	color: #64879b;
+}
+
+.msg-warn {
+	background: #fff5a2;
+	padding: 5px;
+	list-style: none;
+	color: #cca700;
+}
+
+.msg-fatal {
+	background: #ff9b9b;
+	padding: 5px;
+	list-style: none;
+	color: #822121;
+}
+
+.msg-error {
+	background: #ffd3d3;
+	padding: 5px;
+	list-style: none;
+	color: #bb3333;
+}

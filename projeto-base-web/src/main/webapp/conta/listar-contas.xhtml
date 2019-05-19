@@ -5,13 +5,15 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Home</title>
+	<title>Listar contas</title>
 </h:head>
+<body>
 
-<h:body>
+	<h:dataTable value="#{contaBean.contas}" var="conta">
+		<h:column>
+		#{conta.titulo}
+		</h:column>
+	</h:dataTable>
 
-	#{categoriaController.mensagem}
- 
-</h:body>
-
+</body>
 </html>

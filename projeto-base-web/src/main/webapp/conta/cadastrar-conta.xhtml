@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Cadastrar conta</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+</h:head>
+<body>
+
+	<h:form prependId="false" styleClass="form">
+
+		<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
+			errorClass="msg-error" fatalClass="msg-fatal" />
+
+		<h1>Cadastrar conta</h1>
+
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="Título: " />
+			<h:inputText id="titulo" value="#{contaBean.conta.titulo}"
+				required="true" requiredMessage="Campo Título é obrigatório!" />
+
+			<h:outputLabel value="Valor: " />
+			<h:inputText id="valor" value="#{contaBean.conta.valor}"
+				required="true" requiredMessage="Campo Valor é obrigatório" />
+
+			<h:outputLabel value="Tipo: " />
+			<h:selectOneRadio id="tipo" value="#{contaBean.conta.tipo}"
+				required="true" requiredMessage="Campo Tipo é obrigatório">
+				<f:selectItems value="#{contaBean.tipos()}" var="conta"
+					itemValue="#{conta}" itemLabel="#{conta.descricao}" />
+			</h:selectOneRadio>
+
+			<h:outputLabel value="Data de vencimento: " />
+			<h:inputText id="data-vencimento"
+				value="#{contaBean.conta.dataVencimento}" required="true"
+				requiredMessage="Campo Data de vencimento é obrigatório">
+				<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+			</h:inputText>
+
+			<h:outputLabel value="Data de pagamento: " />
+			<h:inputText id="data-pagamento"
+				value="#{contaBean.conta.dataPagamento}">
+				<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+			</h:inputText>
+
+			<h:commandButton action="#{contaBean.adicionar()}" value="Cadastrar" />
+
+		</h:panelGrid>
+
+	</h:form>
+
+</body>
+</html>
