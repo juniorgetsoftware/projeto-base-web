@@ -1,4 +1,4 @@
-package br.com.ucq.ppw.controlador;
+package br.edu.ucq.ppw.controlador;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,9 +10,9 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import br.com.ucq.ppw.bo.ContaBO;
-import br.com.ucq.ppw.modelo.Conta;
-import br.com.ucq.ppw.modelo.Tipo;
+import br.edu.ucq.ppw.bo.ContaBO;
+import br.edu.ucq.ppw.modelo.Conta;
+import br.edu.ucq.ppw.modelo.Tipo;
 
 @ManagedBean
 @ViewScoped

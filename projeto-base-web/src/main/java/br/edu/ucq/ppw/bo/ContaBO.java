@@ -1,9 +1,9 @@
-package br.com.ucq.ppw.bo;
+package br.edu.ucq.ppw.bo;
 
 import java.util.List;
 
-import br.com.ucq.ppw.dao.ContaDAO;
-import br.com.ucq.ppw.modelo.Conta;
+import br.edu.ucq.ppw.dao.ContaDAO;
+import br.edu.ucq.ppw.modelo.Conta;
 
 public class ContaBO {
 

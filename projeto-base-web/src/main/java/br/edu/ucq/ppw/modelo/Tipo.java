@@ -1,4 +1,4 @@
-package br.com.ucq.ppw.modelo;
+package br.edu.ucq.ppw.modelo;
 
 public enum Tipo {
 

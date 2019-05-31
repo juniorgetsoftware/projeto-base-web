@@ -1,9 +1,9 @@
-package br.com.ucq.ppw.dao;
+package br.edu.ucq.ppw.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ucq.ppw.modelo.Conta;
+import br.edu.ucq.ppw.modelo.Conta;
 
 public class ContaDAO {
 
