@@ -12,7 +12,7 @@
 <h:body>
 
 
-	<header> <nav>
+<header> <nav>
 
 	<div class="logo">
 		<h:link value="Contas WEB" outcome="/index"></h:link>
@@ -20,8 +20,12 @@
 
 	<ul class="menu">
 		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
+		<li class="menu__item"><h:link value="Nova categoria"
+				outcome="/categoria/cadastrar-categoria" /></li>
 		<li class="menu__item"><h:link value="Nova conta"
 				outcome="/conta/cadastrar-conta" /></li>
+		<li class="menu__item"><h:link value="Listar categorias"
+				outcome="/categoria/listar-categorias" /></li>
 		<li class="menu__item"><h:link value="Listar contas"
 				outcome="/conta/listar-contas" /></li>
 	</ul>

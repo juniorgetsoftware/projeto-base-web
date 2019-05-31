@@ -11,6 +11,7 @@ public class Conta {
 	private BigDecimal valor;
 	private Date dataPagamento;
 	private Date dataVencimento;
+	private Categoria categoria;
 
 	public Long getId() {
 		return id;
@@ -60,9 +61,16 @@ public class Conta {
 		this.dataVencimento = dataVencimento;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
 

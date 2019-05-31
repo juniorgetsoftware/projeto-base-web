@@ -1,7 +1,5 @@
 package br.edu.ucq.ppw.conversor;
 
-import java.util.Map;
-
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -12,31 +10,20 @@ import br.edu.ucq.ppw.modelo.Categoria;
 @FacesConverter(forClass = Categoria.class, value = "categoriaConverter")
 public class CategoriaConverter implements Converter {
 
-	public Object getAsObject(FacesContext ctx, UIComponent componente, String value) {
-		return value != null ? componente.getAttributes().get(value) : null;
+	@Override
+	public Object getAsObject(FacesContext arg0, UIComponent arg1, String string) {
+		if (string == null || string.isEmpty())
+			return null;
+		return arg1.getAttributes().get(string);
 	}
 
-	public String getAsString(FacesContext ctx, UIComponent componente, Object value) {
-		if (value != null) {
-			Categoria categoria = (Categoria) value;
-			if (categoria.getId() != null) {
-				this.addAttribute(componente, categoria);
-				if (categoria.getId() != null) {
-					return String.valueOf(categoria.getId());
-				}
-				return (String) value;
-			}
-		}
-
-		return "";
-	}
-
-	private void addAttribute(UIComponent componente, Categoria o) {
-		this.getAttributesFrom(componente).put(o.getId().toString(), o);
-	}
-
-	private Map<String, Object> getAttributesFrom(UIComponent componente) {
-		return componente.getAttributes();
+	@Override
+	public String getAsString(FacesContext arg0, UIComponent arg1, Object object) {
+		Categoria categoria = (Categoria) object;
+		if (categoria == null || categoria.getId() == null)
+			return null;
+		arg1.getAttributes().put(String.valueOf(categoria.getId()), categoria);
+		return String.valueOf(categoria.getId());
 	}
 
 }

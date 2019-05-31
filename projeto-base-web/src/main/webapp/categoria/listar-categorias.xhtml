@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Listar contas</title>
+	<title>Listar categorias</title>
 	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 
@@ -34,7 +34,7 @@
 
 		<h:form prependId="false">
 
-			<h1>Listar contas</h1>
+			<h1>Listar categorias</h1>
 
 			<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
 				errorClass="msg-error" fatalClass="msg-fatal" />
@@ -42,66 +42,31 @@
 			<hr />
 
 			<div class="datatable">
-				<h:dataTable id="contas" value="#{contaController.contas}"
-					var="conta">
+				<h:dataTable id="categorias"
+					value="#{categoriaController.categorias}" var="categoria">
 					<h:column headerClass="w10">
 						<f:facet name="header">
 					ID
 				</f:facet>
-				#{conta.id}
+				#{categoria.id}
 			</h:column>
-					<h:column headerClass="w10">
+					<h:column headerClass="w70">
 						<f:facet name="header">
-					Tipo
+					Nome
 				</f:facet>
-				#{conta.tipo.descricao}
+				#{categoria.nome}
 			</h:column>
-					<h:column headerClass="w40">
-						<f:facet name="header">
-					Título
-				</f:facet>
-				#{conta.titulo}
-			</h:column>
-					<h:column headerClass="w40">
-						<f:facet name="header">
-					Categoria
-				</f:facet>
-				#{conta.categoria.nome}
-			</h:column>
+
 					<h:column headerClass="w20">
-						<f:facet name="header">
-					Valor
-				</f:facet>
-						<h:outputLabel value="#{conta.valor}">
-							<f:convertNumber type="currency" />
-						</h:outputLabel>
-					</h:column>
-					<h:column headerClass="w10">
-						<f:facet name="header">
-					Data vencimento
-				</f:facet>
-						<h:outputLabel value="#{conta.dataVencimento}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputLabel>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-					Data pagamento
-				</f:facet>
-						<h:outputLabel value="#{conta.dataPagamento}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputLabel>
-					</h:column>
-					<h:column>
 						<f:facet name="header">
 					Ações
 				</f:facet>
-						<h:link outcome="/conta/cadastrar-conta">
+						<h:link outcome="/categoria/cadastrar-categoria">
 							<h:graphicImage library="img" name="editar.svg" width="20" />
-							<f:param name="id" value="#{conta.id}" />
+							<f:param name="id" value="#{categoria.id}" />
 						</h:link>
 
-						<h:commandLink action="#{contaController.deletar(conta)}">
+						<h:commandLink action="#{categoriaController.deletar(categoria)}">
 							<h:graphicImage library="img" name="remover.svg" width="20" />
 						</h:commandLink>
 					</h:column>

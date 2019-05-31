@@ -5,12 +5,13 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>#{contaController.conta.id == null ? 'Cadastrar' : 'Atualizar'} conta</title>
+	<title>#{contaController.conta.id == null ? 'Cadastrar' :
+		'Atualizar'} conta</title>
 	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 <body>
 
-<header> <nav>
+	<header> <nav>
 
 	<div class="logo">
 		<h:link value="Contas WEB" outcome="/index"></h:link>
@@ -18,24 +19,29 @@
 
 	<ul class="menu">
 		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
+		<li class="menu__item"><h:link value="Nova categoria"
+				outcome="/categoria/cadastrar-categoria" /></li>
 		<li class="menu__item"><h:link value="Nova conta"
 				outcome="/conta/cadastrar-conta" /></li>
+		<li class="menu__item"><h:link value="Listar categorias"
+				outcome="/categoria/listar-categorias" /></li>
 		<li class="menu__item"><h:link value="Listar contas"
 				outcome="/conta/listar-contas" /></li>
 	</ul>
 	</nav> </header>
 
 	<div class="conteiner">
-	
+
 		<h:form prependId="false">
 
-			<h1>#{contaController.conta.id == null ? 'Cadastrar' : 'Atualizar'} conta</h1>
+			<h1>#{contaController.conta.id == null ? 'Cadastrar' :
+				'Atualizar'} conta</h1>
 
 			<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
 				errorClass="msg-error" fatalClass="msg-fatal" />
 
 
-			<hr/>
+			<hr />
 
 			<h:panelGrid columns="2">
 
@@ -53,6 +59,17 @@
 					<f:selectItems value="#{contaController.tipos()}" var="conta"
 						itemValue="#{conta}" itemLabel="#{conta.descricao}" />
 				</h:selectOneRadio>
+
+				<h:outputLabel value="Categoria: " />
+				<h:selectOneMenu id="categoria" converter="categoriaConverter"
+					value="#{contaController.conta.categoria}" required="true"
+					requiredMessage="Campo Categoria é obrigatório" label="Categoria">
+					<f:selectItem noSelectionOption="true" itemLabel="Selecione uma categoria"/>
+					<f:selectItems value="#{categoriaController.categorias}"
+						var="categoria" itemValue="#{categoria}"
+						itemLabel="#{categoria.nome}" />
+						
+				</h:selectOneMenu>
 
 				<h:outputLabel value="Data de vencimento: " />
 				<h:inputText id="data-vencimento"
@@ -73,7 +90,8 @@
 				<h:commandButton action="#{contaController.atualizar()}"
 					styleClass="btn btn-atualizar" value="Atualizar"
 					rendered="#{contaController.conta.id != null}" />
-				<h:button outcome="/conta/listar-contas" styleClass="btn btn-cancelar" value="Cancelar" />
+				<h:button outcome="/conta/listar-contas"
+					styleClass="btn btn-cancelar" value="Cancelar" />
 
 			</h:panelGrid>
 		</h:form>
