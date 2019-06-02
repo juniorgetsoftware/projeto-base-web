@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<title><ui:insert name="titulo-pagina" /></title>
+</h:head>
+<h:body>
+	<ui:insert name="menu-pagina">
+		<ui:include src="/WEB-INF/template/menu.xhtml" />
+	</ui:insert>
+	<div class="conteiner">
+		<h1>
+			<ui:insert name="nome-pagina" />
+		</h1>
+		<hr />
+		<ui:insert name="conteudo-pagina" />
+	</div>
+</h:body>
+</html>

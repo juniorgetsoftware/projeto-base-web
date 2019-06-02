@@ -1,45 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/template/layout.xhtml">
 
-<h:head>
-	<title>Listar contas</title>
-	<h:outputStylesheet library="css" name="estilo.css" />
-</h:head>
+	<ui:define name="titulo-pagina">
+		Listar contas
+	</ui:define>
 
-<body>
+	<ui:define name="nome-pagina">
+		Listar contas
+	</ui:define>
 
-	<header> <nav>
-
-	<div class="logo">
-		<h:link value="Contas WEB" outcome="/index"></h:link>
-	</div>
-
-	<ul class="menu">
-		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
-		<li class="menu__item"><h:link value="Nova categoria"
-				outcome="/categoria/cadastrar-categoria" /></li>
-		<li class="menu__item"><h:link value="Nova conta"
-				outcome="/conta/cadastrar-conta" /></li>
-		<li class="menu__item"><h:link value="Listar categorias"
-				outcome="/categoria/listar-categorias" /></li>
-		<li class="menu__item"><h:link value="Listar contas"
-				outcome="/conta/listar-contas" /></li>
-	</ul>
-	</nav> </header>
-
-	<div class="conteiner">
+	<ui:define name="conteudo-pagina">
 
 		<h:form prependId="false">
-
-			<h1>Listar contas</h1>
-
 			<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
 				errorClass="msg-error" fatalClass="msg-fatal" />
-
-			<hr />
 
 			<div class="datatable">
 				<h:dataTable id="contas" value="#{contaController.contas}"
@@ -108,6 +86,5 @@
 				</h:dataTable>
 			</div>
 		</h:form>
-	</div>
-</body>
-</html>
+	</ui:define>
+</ui:composition>

@@ -1,54 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/template/layout.xhtml">
 
-<h:head>
-	<title>#{categoriaController.categoria.id == null ? 'Cadastrar'
-		: 'Atualizar'} categoria</title>
-	<h:outputStylesheet library="css" name="estilo.css" />
-</h:head>
-<body>
+	<ui:define name="titulo-pagina">
+		#{categoriaController.categoria.id == null ? 'Cadastrar'
+		: 'Atualizar'} categoria
+	</ui:define>
 
-	<header> <nav>
+	<ui:define name="nome-pagina">
+		#{categoriaController.categoria.id == null ? 'Cadastrar' :
+				'Atualizar'} categoria
+	</ui:define>
 
-	<div class="logo">
-		<h:link value="Contas WEB" outcome="/index"></h:link>
-	</div>
-
-	<ul class="menu">
-		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
-		<li class="menu__item"><h:link value="Nova categoria"
-				outcome="/categoria/cadastrar-categoria" /></li>
-		<li class="menu__item"><h:link value="Nova conta"
-				outcome="/conta/cadastrar-conta" /></li>
-		<li class="menu__item"><h:link value="Listar categorias"
-				outcome="/categoria/listar-categorias" /></li>
-		<li class="menu__item"><h:link value="Listar contas"
-				outcome="/conta/listar-contas" /></li>
-	</ul>
-	</nav> </header>
-
-	<div class="conteiner">
-
+	<ui:define name="conteudo-pagina">
 		<h:form prependId="false">
-
-			<h1>#{categoriaController.categoria.id == null ? 'Cadastrar' :
-				'Atualizar'} categoria</h1>
-
 			<h:messages id="msgs" infoClass="msg-info" warnClass="msg-warn"
 				errorClass="msg-error" fatalClass="msg-fatal" />
-
-
-			<hr />
-
 			<h:panelGrid columns="2">
-
 				<h:outputLabel value="Nome " />
 				<h:inputText id="nome" value="#{categoriaController.categoria.nome}"
 					required="true" requiredMessage="Campo Nome é obrigatório!" />
-
 				<h:commandButton action="#{categoriaController.adicionar()}"
 					styleClass="btn btn-salvar" value="Cadastrar"
 					rendered="#{categoriaController.categoria.id == null}" />
@@ -57,10 +31,7 @@
 					rendered="#{categoriaController.categoria.id != null}" />
 				<h:button outcome="/categoria/listar-categorias"
 					styleClass="btn btn-cancelar" value="Cancelar" />
-
 			</h:panelGrid>
 		</h:form>
-	</div>
-
-</body>
-</html>
+	</ui:define>
+</ui:composition>

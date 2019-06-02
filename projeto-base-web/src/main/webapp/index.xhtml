@@ -1,43 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/template/layout.xhtml">
 
-<h:head>
-	<h:outputStylesheet library="css" name="estilo.css" />
-	<title>Home</title>
-</h:head>
+	<ui:define name="titulo-pagina">
+		Início
+	</ui:define>
 
-<h:body>
+	<ui:define name="nome-pagina">
+		Página inicial
+	</ui:define>
 
-
-<header> <nav>
-
-	<div class="logo">
-		<h:link value="Contas WEB" outcome="/index"></h:link>
-	</div>
-
-	<ul class="menu">
-		<li class="menu__item"><h:link value="Início" outcome="/index" /></li>
-		<li class="menu__item"><h:link value="Nova categoria"
-				outcome="/categoria/cadastrar-categoria" /></li>
-		<li class="menu__item"><h:link value="Nova conta"
-				outcome="/conta/cadastrar-conta" /></li>
-		<li class="menu__item"><h:link value="Listar categorias"
-				outcome="/categoria/listar-categorias" /></li>
-		<li class="menu__item"><h:link value="Listar contas"
-				outcome="/conta/listar-contas" /></li>
-	</ul>
-	</nav> </header>
-
-	<div class="conteiner">
-
-		<h1>Olá, mundo</h1>
-		<hr />
-
-	</div>
-
-</h:body>
-
-</html>
+	<ui:define name="conteudo-pagina">
+		Olá, mundo
+		
+	</ui:define>
+</ui:composition>
