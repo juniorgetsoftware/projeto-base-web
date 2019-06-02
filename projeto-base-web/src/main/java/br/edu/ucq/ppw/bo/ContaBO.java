@@ -1,10 +1,14 @@
 package br.edu.ucq.ppw.bo;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 import br.edu.ucq.ppw.dao.ContaDAO;
 import br.edu.ucq.ppw.excecao.RegraNegocioException;
+import br.edu.ucq.ppw.modelo.Categoria;
 import br.edu.ucq.ppw.modelo.Conta;
+import br.edu.ucq.ppw.modelo.Tipo;
 
 public class ContaBO {
 
@@ -37,5 +41,9 @@ public class ContaBO {
 
 	public Conta contaPorId(Long indice) {
 		return dao.contaPorId(indice);
+	}
+
+	public Map<Categoria, BigDecimal> custoPorCategoria(Tipo tipo) {
+		return dao.custoPorCategoria(tipo);
 	}
 }

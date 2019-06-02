@@ -14,7 +14,58 @@
 	</ui:define>
 
 	<ui:define name="conteudo-pagina">
-		Olá, mundo
-		
+
+		<script type="text/javascript"
+			src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Categoria', 'Total'],
+
+          #{homeController.custoPorCategoriaReceitas()}
+          
+        ]);
+
+        var options = {
+          title: 'Receitas por categoria'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('receitas'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+		<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Categoria', 'Total'],
+
+          #{homeController.custoPorCategoriaDespesas()}
+          
+        ]);
+
+        var options = {
+          title: 'Despesas por categoria'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('despesas'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+		<div id="receitas" style="width: 100%; height: 250px;"></div>
+		<div id="despesas" style="width: 100%; height: 250px;"></div>
+
 	</ui:define>
 </ui:composition>

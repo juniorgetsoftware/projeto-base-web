@@ -1,9 +1,14 @@
 package br.edu.ucq.ppw.dao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
+import br.edu.ucq.ppw.modelo.Categoria;
 import br.edu.ucq.ppw.modelo.Conta;
+import br.edu.ucq.ppw.modelo.Tipo;
 
 public class ContaDAO {
 
@@ -36,6 +41,11 @@ public class ContaDAO {
 
 	public Conta contaPorId(Long indice) {
 		return contasDb.stream().filter(c -> c.getId().equals(indice)).findFirst().orElse(null);
+	}
+
+	public Map<Categoria, BigDecimal> custoPorCategoria(Tipo tipo) {
+		return contasDb.stream().filter(c -> tipo.equals(c.getTipo())).collect(Collectors.groupingBy(Conta::getCategoria,
+				Collectors.reducing(BigDecimal.ZERO, Conta::getValor, BigDecimal::add)));
 	}
 
 }
