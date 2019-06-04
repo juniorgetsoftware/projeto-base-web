@@ -9,6 +9,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	padding: 0 0 10px 0;
 	margin: 0;
+	color: #444;
+}
+
+label {
+	color: #444;	
 }
 
 .conteiner {
@@ -89,6 +94,10 @@ ul {
 	border: 1px solid #f3f3f3;
 	padding: 10px;
 	border-collapse: collapse;
+}
+
+.datatable table {
+	width: 100%;
 }
 
 .datatable thead {
